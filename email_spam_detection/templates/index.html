@@ -3,10 +3,10 @@
 <head>
     <title>Email Spam Detection</title>
     <style>
-        /* Page background */
+       
         body {
-            background: #1f1f2e; /* dark navy-ish */
-            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #1f1f2e; 
+            font-family: 'Times New Roman', Times, serif; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -14,9 +14,9 @@
             margin: 0;
         }
 
-        /* Card container */
+     
         .container {
-            background: #2e2e44; /* slightly lighter dark card */
+            background: #2e2e44;
             padding: 40px 60px;
             border-radius: 20px;
             box-shadow: 0px 15px 30px rgba(0,0,0,0.4);
@@ -26,7 +26,7 @@
         }
 
         h2 {
-            color: #ffd369; /* bright yellow */
+            color: #ffd369; 
             margin-bottom: 25px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
@@ -60,23 +60,29 @@
             transform: scale(1.05);
         }
 
+        
         .result {
             margin-top: 30px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
+            text-align: left; 
+            padding: 20px;
+            border-radius: 12px;
+            word-wrap: break-word; 
         }
 
         .spam {
-            color: #ff4d4d; /* bright red */
+            background-color: rgba(255, 77, 77, 0.8); 
+            color: #ffffff; 
         }
 
         .not-spam {
-            color: #2ed573; /* bright green */
+            background-color: rgba(46, 213, 115, 0.8);
+            color: #ffffff; 
         }
 
         p {
-            margin: 8px 0;
-            word-wrap: break-word;
+            margin: 6px 0;
         }
     </style>
 </head>
@@ -85,16 +91,16 @@
         <h2>Email Spam Detection</h2>
 
         <form method="POST">
-            <textarea name="email_text" rows="6" placeholder="Enter your email here..."></textarea>
+            <textarea name="email_text" rows="6" placeholder="Enter your email here..." required></textarea>
             <br>
             <input type="submit" value="Check Spam">
         </form>
 
         {% if prediction %}
-            <div class="result">
-                <p>Result: <span class="{% if prediction == 'Spam' %}spam{% else %}not-spam{% endif %}">{{ prediction }}</span></p>
-                <p>Spam Probability: {{ probability }}%</p>
-                <p>Email: {{ email }}</p>
+            <div class="result {% if prediction == 'Spam' %}spam{% else %}not-spam{% endif %}">
+                <p><strong>Result:</strong> {{ prediction }}</p>
+                <p><strong>Spam Probability:</strong> {{ probability }}%</p>
+                <p><strong>Email:</strong> {{ email }}</p>
             </div>
         {% endif %}
     </div>
